@@ -16,12 +16,15 @@ After enabling/disabling modules an app cache cleaning process is necessary (che
 If you want to disable module auto links and add your own according to your template, then dashout 3 frontend link registration commands in the Providers\AirlinesServiceProvider.php file as shown below;
 (Two forward slashes will make them disabled.)
 
-`    // $this->moduleSvc->addFrontendLink('Hubs', '/dhubs', 'fas fa-calendar', $logged_in=true);
-    // $this->moduleSvc->addFrontendLink('Stats & Leaderboard', '/dstats', 'fas fa-cog', $logged_in=true);`
+```
+   // $this->moduleSvc->addFrontendLink('Hubs', '/dhubs', 'fas fa-calendar', $logged_in=true);
+   // $this->moduleSvc->addFrontendLink('Stats & Leaderboard', '/dstats', 'fas fa-cog', $logged_in=true);
+```
     
 Then you can add links to your navbar with below examples;
 
-`<li>
+```
+<li>
   <a class="nav-link" href="{{ route('DisposableAirlines.dairlines') }}">
     <i class="fas fa-calendar-alt"></i>
     <span>Airlines</span>
@@ -40,11 +43,13 @@ Then you can add links to your navbar with below examples;
     <i class="fas fa-upload"></i>
     <span>All Pireps</span>
   </a>
-</li>`
+</li>
+```
 
 Also having a direct link to a specific airline/subfleet/aircraft is possible with;
 
-`<li>
+```
+<li>
   <a class="nav-link" href="{{ route('DisposableAirlines.dairline', ['DSP']) }}">
     <i class="fas fa-calendar-day"></i>
     <span>My Airline</span>
@@ -63,7 +68,8 @@ Also having a direct link to a specific airline/subfleet/aircraft is possible wi
     <i class="fas fa-plane-departure"></i>
     <span>My Subfleet</span>
   </a>
-</li>`
+</li>
+```
 
 Airline direct links use airline icao code, subfleets use their unique type and aircrafts use their registrations.
 
