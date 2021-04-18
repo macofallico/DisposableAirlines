@@ -1,0 +1,16 @@
+{
+    "name": "DisposableAirlines",
+    "alias": "disposableairlines",
+    "description": "A module to display Airline, Fleet, Aircraft and Pireps",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\DisposableAirlines\\Providers\\AirlinesServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+      "helpers.php"
+    ],
+    "requires": []
+}

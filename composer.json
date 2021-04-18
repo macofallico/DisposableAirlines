@@ -1,0 +1,20 @@
+{
+    "name": "DisposableAirlines",
+    "type": "phpvms-module",
+    "description": "A module to display Airline, Fleet, Aircraft and Pireps",
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\DisposableAirlines\\Providers\\AirlinesServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\DisposableAirlines\\": "."
+        }
+    }
+}
