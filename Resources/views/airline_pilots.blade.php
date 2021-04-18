@@ -72,7 +72,11 @@
               @minutestotime($user->flight_time + $user->transfer_time)
             </td>
             <td class="align-middle">
-              <img class="rounded img-mh30" src="{{ $user->rank->image_url }}" title="{{ $user->rank->name }}">
+              @if(filled($user->rank->image_url))
+                <img class="rounded img-mh30" src="{{ $user->rank->image_url }}" title="{{ $user->rank->name }}">
+              @else
+                {{ $user->rank->name }}
+              @endif
             </td>
             <td class="align-middle">
               @if ($user->awards->count() > 0) 
