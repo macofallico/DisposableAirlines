@@ -11,6 +11,7 @@ return [
   'subfleet'  => 'SubFleet',
   'hub'       => 'Hub|Hubs',
   'airline'   => 'Airline',
+  'airlines'  => 'Airlines',
   'adetails'  => 'Airline Details',
   'afinance'  => 'Overall Finance',
   'abalance'  => 'Balance',

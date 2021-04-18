@@ -1,10 +1,10 @@
 @extends('app')
-@section('title', trans_choice('DisposableAirlines::common.airline',2))
+@section('title', __('DisposableAirlines::common.airlines'))
 
 @section('content')
   <div class="row">
     <div class="col">
-      <h3 class="card-title">{{ trans_choice('DisposableAirlines::common.airline',2) }}</h3>
+      <h3 class="card-title">@lang('DisposableAirlines::common.airlines')</h3>
     </div>
   </div>
 

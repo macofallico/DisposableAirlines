@@ -67,7 +67,7 @@
                   @endif
                 </td>
                 <td>
-                  @if($aircraft->fuel_onboard)
+                  @if($aircraft->fuel_onboard > 0)
                     {{ Dsp_Fuel($aircraft->fuel_onboard) }}
                   @endif
                 </td>

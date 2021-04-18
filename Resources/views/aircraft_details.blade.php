@@ -60,13 +60,15 @@
           @endif
         </td>
       </tr>
-      <tr>
-        <th scope="row">@lang('DisposableAirlines::common.location')</th>
-        <td>
-          <a href="{{ route('frontend.airports.show', [$aircraft->airport_id]) }}">{{ $aircraft->airport->name }}</a>
-        </td>
-      </tr>
-      @if($aircraft->fuel_onboard)
+      @if($aircraft->airport_id)
+        <tr>
+          <th scope="row">@lang('DisposableAirlines::common.location')</th>
+          <td>
+            <a href="{{ route('frontend.airports.show', [$aircraft->airport_id]) }}">{{ $aircraft->airport->name }}</a>
+          </td>
+        </tr>
+      @endif
+      @if($aircraft->fuel_onboard > 0)
         <tr>
           <th scope="row">@lang('DisposableAirlines::common.fuelob')</th>
           <td>{{ Dsp_Fuel($aircraft->fuel_onboard) }}</td>

@@ -23,7 +23,11 @@
           {{ $subfleet->hub_id ?? ''}}
         @endif
       </td>
-      <td><a href="{{ route('frontend.airports.show', [$aircraft->airport_id]) }}">{{ $aircraft->airport_id }}</a></td>
+      <td>
+        @if($aircraft->airport_id)
+          <a href="{{ route('frontend.airports.show', [$aircraft->airport_id]) }}">{{ $aircraft->airport_id }}</a>
+        @endif
+      </td>
       <td>
         @if($aircraft->flight_time > 0)
           @minutestotime($aircraft->flight_time)
@@ -35,7 +39,7 @@
         @endif
       </td>
       <td>
-        @if($aircraft->fuel_onboard) 
+        @if($aircraft->fuel_onboard > 0) 
           {{ Dsp_Fuel($aircraft->fuel_onboard) }}
         @endif
       </td>
