@@ -25,7 +25,7 @@ frontend link registration commands in the Providers\AirlinesServiceProvider.php
 Then you can add links to your navbar with below examples;
 
 <li>
-  <a class="nav-link" href="{{ route('DisposableAirlines.dairlines') }}">
+  <a class="nav-link" href="{{ route('DisposableAirlines.aindex') }}">
     <i class="fas fa-calendar-alt"></i>
     <span>Airlines</span>
   </a>
@@ -48,7 +48,7 @@ Then you can add links to your navbar with below examples;
 Also having a direct link to a specific airline/subfleet/aircraft is possible with;
 
 <li>
-  <a class="nav-link" href="{{ route('DisposableAirlines.dairline', ['DSP']) }}">
+  <a class="nav-link" href="{{ route('DisposableAirlines.ashow', ['DSP']) }}">
     <i class="fas fa-calendar-day"></i>
     <span>My Airline</span>
   </a>
