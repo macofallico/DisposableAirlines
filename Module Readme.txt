@@ -1,4 +1,4 @@
-Disposable Airlines Module for phpVMS v7 (v1.0)
+Disposable Airlines Module for phpVMS v7
 
 This module is compatible with the latest dev build as of 17APR2021, there is no need to modify any default files.
 Technically all blade files (views/pages or whatever you call them) should work with your template but they are mainly 
@@ -6,7 +6,7 @@ designed for Bootstrap compatible themes (like Disposable Themes, Stisla etc).
 
 So if something looks weird in your template then you need to edit them.
 
-***** Installation Steps 
+***** Manual Installation Steps 
 
 Upload contents of the package (or pull/clone from GitHub) to your root/modules/DisposableAirlines folder
 Go to admin section and enable the module, that's all
@@ -25,7 +25,7 @@ frontend link registration commands in the Providers\AirlinesServiceProvider.php
 Then you can add links to your navbar with below examples;
 
 <li>
-  <a class="nav-link" href="{{ route('DisposableAirlines.dairlines') }}">
+  <a class="nav-link" href="{{ route('DisposableAirlines.aindex') }}">
     <i class="fas fa-calendar-alt"></i>
     <span>Airlines</span>
   </a>
@@ -48,7 +48,7 @@ Then you can add links to your navbar with below examples;
 Also having a direct link to a specific airline/subfleet/aircraft is possible with;
 
 <li>
-  <a class="nav-link" href="{{ route('DisposableAirlines.dairline', ['DSP']) }}">
+  <a class="nav-link" href="{{ route('DisposableAirlines.ashow', ['DSP']) }}">
     <i class="fas fa-calendar-day"></i>
     <span>My Airline</span>
   </a>
