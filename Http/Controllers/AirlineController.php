@@ -70,7 +70,13 @@ class AirlineController extends Controller
 
         if($airline) {
             $DisposableTools = Module::has('DisposableTools');
+            if($DisposableTools) { 
+              $DisposableTools = $DisposableTools->isEnabled();
+            }
             $DisposableHubs = Module::has('DisposableHubs');
+            if($DisposableHubs) { 
+              $DisposableHubs = $DisposableHubs->isEnabled();
+            }
             $pilots = $this->userRepo->where('airline_id', $airline->id)->orderby('id')->get();
             $subfleets = $this->subfleetRepo->where('airline_id', $airline->id)->pluck('id')->all();
             $aircraft = $this->aircraftRepo->whereIn('subfleet_id', $subfleets)->orderby('registration')->get();

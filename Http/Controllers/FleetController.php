@@ -29,6 +29,9 @@ class FleetController extends Controller
   {
     $fleet = $this->aircraftRepo->orderby('registration', 'asc')->paginate(50);
     $DisposableHubs = Module::has('DisposableHubs');
+    if($DisposableHubs) { 
+      $DisposableHubs = $DisposableHubs->isEnabled();
+    }
 
     return view('DisposableAirlines::fleet',[
       'fleet'    => $fleet,
@@ -41,6 +44,9 @@ class FleetController extends Controller
   public function subfleet($type)
   {
     $DisposableHubs = Module::has('DisposableHubs');
+    if($DisposableHubs) { 
+      $DisposableHubs = $DisposableHubs->isEnabled();
+    }
     $subfleet = $this->subfleetRepo->where('type', $type)->first();
     $fleet = $this->aircraftRepo->where('subfleet_id', $subfleet->id)->orderby('registration', 'asc')->paginate(50);
 
@@ -61,7 +67,13 @@ class FleetController extends Controller
   public function aircraft($reg)
   {
     $DisposableTools = Module::has('DisposableTools');
+    if($DisposableTools) { 
+      $DisposableTools = $DisposableTools->isEnabled();
+    }
     $DisposableHubs = Module::has('DisposableHubs');
+    if($DisposableHubs) { 
+      $DisposableHubs = $DisposableHubs->isEnabled();
+    }
     $aircraft = $this->aircraftRepo->where('registration', $reg)->first();
     
     if(!$aircraft) {
