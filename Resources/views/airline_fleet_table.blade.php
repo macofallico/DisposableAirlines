@@ -18,7 +18,7 @@
       <td>{{ $aircraft->icao ?? ''}} / {{ $aircraft->iata ?? ''}}</td>
       <td>
         @if($subfleet->hub_id && $disphubs)
-          <a href="{{ route('DisposableHubs.hshow', [$subfleet->hub_id]) }}">{{ $subfleet->hub_id }}</a> 
+          <a href="{{ route('DisposableHubs.hshow', [$subfleet->hub_id]) }}">{{ $subfleet->hub_id }}</a>
         @else
           {{ $subfleet->hub_id ?? ''}}
         @endif
@@ -34,21 +34,17 @@
         @endif
       </td>
       <td>
-        @if($aircraft->landing_time) 
+        @if($aircraft->landing_time)
           {{ Carbon::parse($aircraft->landing_time)->diffForHumans() }}
         @endif
       </td>
       <td>
-        @if($aircraft->fuel_onboard > 0) 
-          {{ Dsp_Fuel($aircraft->fuel_onboard) }}
+        @if($aircraft->fuel_onboard > 0)
+          {{ Dispo_Fuel($aircraft->fuel_onboard) }}
         @endif
       </td>
-      <td>
-        <span class="badge {{ Dsp_AcStateBadge($aircraft->state) }}">{{ \App\Models\Enums\AircraftState::label($aircraft->state) }}</span>
-      </td>
-      <td>
-        <span class="badge {{ Dsp_AcStatusBadge($aircraft->status) }}">{{ \App\Models\Enums\AircraftStatus::label($aircraft->status) }}</span>
-      </td>
+      <td>{!! Dispo_AcStateBadge($aircraft->state) !!}</td>
+      <td>{!! Dispo_AcStatusBadge($aircraft->status) !!}</td>
     </tr>
   @endforeach
 </table>

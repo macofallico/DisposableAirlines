@@ -24,14 +24,14 @@
             <b>{{ $pirep->airline->iata }} {{ $pirep->ident }}</b>
           </td>
           <td>
-            <a href="{{ route('frontend.airports.show', [$pirep->dpt_airport_id]) }}">{{ $pirep->dpt_airport_id }}</a>
+            <a href="{{ route('frontend.airports.show', [$pirep->dpt_airport_id]) }}" title="{{ $pirep->dpt_airport->name ?? '' }}">{{ $pirep->dpt_airport_id }}</a>
           </td>
           <td>
-            <a href="{{ route('frontend.airports.show', [$pirep->arr_airport_id]) }}">{{ $pirep->arr_airport_id }}</a>
+            <a href="{{ route('frontend.airports.show', [$pirep->arr_airport_id]) }}" title="{{ $pirep->arr_airport->name ?? '' }}">{{ $pirep->arr_airport_id }}</a>
           </td>
           <td>
             @if($pirep->distance)
-              {{ Dsp_Distance($pirep->distance) }}
+              {{ Dispo_Distance($pirep->distance) }}
             @endif
           </td>
           <td>
@@ -41,12 +41,12 @@
           </td>
           <td>
             @if($pirep->fuel_used)
-              {{ Dsp_Fuel($pirep->fuel_used) }}
+              {{ Dispo_Fuel($pirep->fuel_used) }}
             @endif
           </td>
           <td>
             @if(filled($pirep->submitted_at))
-              {{ $pirep->submitted_at->diffForHumans() }} 
+              {{ $pirep->submitted_at->diffForHumans() }}
             @endif
           </td>
           <td>
@@ -56,4 +56,4 @@
       @endforeach
     </table>
   </div>
-</div> 
+</div>

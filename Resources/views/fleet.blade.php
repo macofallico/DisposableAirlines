@@ -68,15 +68,11 @@
                 </td>
                 <td>
                   @if($aircraft->fuel_onboard > 0)
-                    {{ Dsp_Fuel($aircraft->fuel_onboard) }}
+                    {{ Dispo_Fuel($aircraft->fuel_onboard) }}
                   @endif
                 </td>
-                <td>
-                  <span class="badge {{ Dsp_AcStateBadge($aircraft->state) }}">{{ \App\Models\Enums\AircraftState::label($aircraft->state) }}</span>
-                </td>
-                <td>
-                  <span class="badge {{ Dsp_AcStatusBadge($aircraft->status) }}">{{ \App\Models\Enums\AircraftStatus::label($aircraft->status) }}</span>
-                </td>
+                <td>{!! Dispo_AcStateBadge($aircraft->state) !!}</td>
+                <td>{!! Dispo_AcStatusBadge($aircraft->status) !!}</td>
               </tr>
             @endforeach
           </table>
@@ -85,7 +81,7 @@
           <div class="row row-cols-2">
             <div class="col text-left">
               @isset($subfleet)
-                @lang('DisposableAirlines::common.config') : 
+                @lang('DisposableAirlines::common.config') :
                 @foreach($subfleet->fares as $fare)
                   @if(!$loop->first) &bull; @endif
                   {{ $fare->name }}

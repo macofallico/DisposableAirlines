@@ -57,9 +57,7 @@
                 <td>
                   <a href="{{ route('frontend.users.show.public', [$pirep->user->id]) }}">{{ $pirep->user->name_private }}</a>
                 </td>
-                <td class="text-center">
-                  <span class="badge {{ Dsp_PirepBadge($pirep->state) }}">{{ PirepState::label($pirep->state) }}</span>
-                </td>
+                <td class="text-center">{!! Dispo_PirepBadge($pirep->state) !!}</td>
               </tr>
             @endforeach
           </table>

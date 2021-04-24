@@ -88,6 +88,10 @@ class AirlineController extends Controller
             $expense = substr($airline->journal->transactions->sum('debit'),0,-2);
             $balance = $income - $expense;
 
+            if(setting('pilots.hide_inactive')) {
+                $pilots = $pilots->where('state',1);
+            }
+
             return view('DisposableAirlines::airline', [
                 'disptools' => $DisposableTools,
                 'disphubs'  => $DisposableHubs,
@@ -95,7 +99,7 @@ class AirlineController extends Controller
                 'income'    => $income,
                 'expense'   => $expense,
                 'balance'   => $balance,
-                'pilots'    => $pilots,
+                'users'     => $pilots,
                 'pireps'    => $pireps,
                 'fleet'     => $aircraft,
                 'country'   => new ISO3166(),

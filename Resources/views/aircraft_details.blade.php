@@ -54,7 +54,7 @@
         <th scope="row">@lang('DisposableAirlines::common.base')</th>
         <td>
           @if($aircraft->subfleet->hub_id && $disphubs)
-            <a href="{{ route('DisposableHubs.hshow', [$aircraft->subfleet->hub_id]) }}">{{ $aircraft->subfleet->hub->name }}</a>                 
+            <a href="{{ route('DisposableHubs.hshow', [$aircraft->subfleet->hub_id]) }}">{{ $aircraft->subfleet->hub->name }}</a>
           @else
             {{ $aircraft->subfleet->hub_id ?? '' }}
           @endif
@@ -71,7 +71,7 @@
       @if($aircraft->fuel_onboard > 0)
         <tr>
           <th scope="row">@lang('DisposableAirlines::common.fuelob')</th>
-          <td>{{ Dsp_Fuel($aircraft->fuel_onboard) }}</td>
+          <td>{{ Dispo_Fuel($aircraft->fuel_onboard) }}</td>
         </tr>
       @endif
       @if($aircraft->landing_time)
@@ -83,4 +83,3 @@
     </table>
   </div>
 </div>
-      

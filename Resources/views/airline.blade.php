@@ -7,13 +7,13 @@
     <div class="col-9">
       <ul class="nav nav-pills nav-fill mb-2" id="pills-tab" role="tablist">
         <li class="nav-item pr-1 pl-1" role="presentation">
-          <a class="nav-link dispotabs active" id="pills-fleet-tab" data-toggle="pill" href="#pills-fleet" role="tab" aria-controls="pills-fleet" aria-selected="true">@lang('DisposableAirlines::common.fleet')</a>
+          <a class="nav-link dispo-pills active" id="pills-fleet-tab" data-toggle="pill" href="#pills-fleet" role="tab" aria-controls="pills-fleet" aria-selected="true">@lang('DisposableAirlines::common.fleet')</a>
         </li>
         <li class="nav-item pr-1 pl-1" role="presentation">
-          <a class="nav-link dispotabs" id="pills-pilots-tab" data-toggle="pill" href="#pills-pilots" role="tab" aria-controls="pills-pilots" aria-selected="false">@lang('DisposableAirlines::common.pilots')</a>
+          <a class="nav-link dispo-pills" id="pills-pilots-tab" data-toggle="pill" href="#pills-pilots" role="tab" aria-controls="pills-pilots" aria-selected="false">@lang('DisposableAirlines::common.pilots')</a>
         </li>
         <li class="nav-item pr-1 pl-1" role="presentation">
-          <a class="nav-link dispotabs" id="pills-pireps-tab" data-toggle="pill" href="#pills-pireps" role="tab" aria-controls="pills-pireps" aria-selected="false">@lang('DisposableAirlines::common.pireps')</a>
+          <a class="nav-link dispo-pills" id="pills-pireps-tab" data-toggle="pill" href="#pills-pireps" role="tab" aria-controls="pills-pireps" aria-selected="false">@lang('DisposableAirlines::common.pireps')</a>
         </li>
       </ul>
       <div class="tab-content" id="pills-tabContent">
@@ -102,6 +102,6 @@
   </div>
   {{-- Custom Style For Inactive Tabs --}}
   <style>
-    .dispotabs { color: black; background-color: lightslategray;}
+    .dispo-pills { color: black; background-color: lightslategray;}
   </style>
 @endsection
