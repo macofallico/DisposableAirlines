@@ -28,7 +28,7 @@ class FleetController extends Controller
   public function fleet()
   {
     $fleet = $this->aircraftRepo->orderby('registration', 'asc')->paginate(50);
-    $DisposableHubs = Module::has('DisposableHubs');
+    $DisposableHubs = Module::find('DisposableHubs');
     if($DisposableHubs) { 
       $DisposableHubs = $DisposableHubs->isEnabled();
     }
@@ -43,7 +43,7 @@ class FleetController extends Controller
   // Return mixed
   public function subfleet($type)
   {
-    $DisposableHubs = Module::has('DisposableHubs');
+    $DisposableHubs = Module::find('DisposableHubs');
     if($DisposableHubs) { 
       $DisposableHubs = $DisposableHubs->isEnabled();
     }
@@ -66,11 +66,11 @@ class FleetController extends Controller
   // Return mixed
   public function aircraft($reg)
   {
-    $DisposableTools = Module::has('DisposableTools');
+    $DisposableTools = Module::find('DisposableTools');
     if($DisposableTools) { 
       $DisposableTools = $DisposableTools->isEnabled();
     }
-    $DisposableHubs = Module::has('DisposableHubs');
+    $DisposableHubs = Module::find('DisposableHubs');
     if($DisposableHubs) { 
       $DisposableHubs = $DisposableHubs->isEnabled();
     }

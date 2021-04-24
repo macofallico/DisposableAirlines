@@ -69,11 +69,11 @@ class AirlineController extends Controller
         }
 
         if($airline) {
-            $DisposableTools = Module::has('DisposableTools');
+            $DisposableTools = Module::find('DisposableTools');
             if($DisposableTools) { 
               $DisposableTools = $DisposableTools->isEnabled();
             }
-            $DisposableHubs = Module::has('DisposableHubs');
+            $DisposableHubs = Module::find('DisposableHubs');
             if($DisposableHubs) { 
               $DisposableHubs = $DisposableHubs->isEnabled();
             }
