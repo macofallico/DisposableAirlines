@@ -30,11 +30,14 @@ class AirlinesServiceProvider extends ServiceProvider
   /** Register Module Links **/
   public function registerLinks()
   {
-    /** If You Want To Place The Links Manually Then Dashout below 3 lines **/
-    $this->moduleSvc->addFrontendLink('Airlines', '/dairlines', 'fas fa-calendar-alt', $logged_in=true);
-    $this->moduleSvc->addFrontendLink('Fleet', '/dfleet', 'fas fa-plane-departure', $logged_in=true);
-    $this->moduleSvc->addFrontendLink('All PIREPs', '/dpireps', 'fas fa-upload', $logged_in=true);
-    /** Do Not Remove Admin Link **/
+    /** If You Want To Place The Links Automatically Then Enable below 3 lines **/
+    /** DisposableTheme is pre-configure to show below links when you install this module  **/
+
+    // $this->moduleSvc->addFrontendLink('Airlines', '/dairlines', 'fas fa-calendar-alt', $logged_in=true);
+    // $this->moduleSvc->addFrontendLink('Fleet', '/dfleet', 'fas fa-plane-departure', $logged_in=true);
+    // $this->moduleSvc->addFrontendLink('All PIREPs', '/dpireps', 'fas fa-upload', $logged_in=true);
+
+    /** Do Not Remove or Disable Admin Link **/
     $this->moduleSvc->addAdminLink('Disposable Airlines', '/admin/disposableairlines');
   }
 

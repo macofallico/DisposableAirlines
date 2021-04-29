@@ -13,16 +13,16 @@ After enabling/disabling modules an app cache cleaning process is necessary (che
 
 ***** Usage
 
-If you want to disable module auto links and add your own according to your template, then dashout 3 frontend link registration commands in the Providers\AirlinesServiceProvider.php file as shown below;
-(Two forward slashes will make them disabled.)
+If you want to enable module auto links, then enable frontend link registration commands in ModuleFolder\Providers\....ServiceProvider.php file as shown below;\
+(Two forward slashes (//) = Disabled, No forward slashes = Enabled )
 
 ```
-  // $this->moduleSvc->addFrontendLink('Airlines', '/dairlines', 'fas fa-calendar-alt', $logged_in=true);
+  $this->moduleSvc->addFrontendLink('Airlines', '/dairlines', 'fas fa-calendar-alt', $logged_in=true);
   // $this->moduleSvc->addFrontendLink('Fleet', '/dfleet', 'fas fa-plane-departure', $logged_in=true);
   // $this->moduleSvc->addFrontendLink('All PIREPs', '/dpireps', 'fas fa-upload', $logged_in=true);
 ```
     
-Then you can add links to your navbar with below examples;
+DisposableTheme IS capable of recognizing and showing proper links for Disposable Modules but if you need some more control, then you can add links to your navbar (or any other place) with below examples;
 
 ```
 <li>
