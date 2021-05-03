@@ -81,7 +81,7 @@ class FleetController extends Controller
       return redirect(route('DisposableAirlines.dfleet'));
     }
 
-    $pireps = $this->pirepRepo->where('aircraft_id', $aircraft->id)->take(5)->get();
+    $pireps = $this->pirepRepo->where('aircraft_id', $aircraft->id)->orderby('submitted_at', 'desc')->take(5)->get();
     $showimage = null;
     $acimage = strtolower('image/aircraft/'.$aircraft->registration.'.jpg');
     $sfimage = strtolower('image/subfleet/'.$aircraft->subfleet->type.'.jpg');
