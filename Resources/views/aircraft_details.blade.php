@@ -9,12 +9,12 @@
     <table class="table table-sm table-borderless table-striped mb-0">
       @if ($aircraft->name != $aircraft->registration)
         <tr>
-          <th scope="row">@lang('common.name')</th>
+          <th style="width: 30%;" scope="row">@lang('common.name')</th>
           <td>{{ $aircraft->name }}</td>
         </tr>
       @endif
       <tr>
-        <th scope="row">ICAO/IATA @lang('DisposableAirlines::common.type')</th>
+        <th style="width: 30%;" scope="row">ICAO/IATA @lang('DisposableAirlines::common.type')</th>
         <td>{{ $aircraft->icao }} / {{ $aircraft->iata }}</td>
       </tr>
       @if ($aircraft->subfleet->fares->count())
@@ -32,11 +32,11 @@
       @endif
       <tr>
         <th scope="row">@lang('common.status')</th>
-        <td>{{ \App\Models\Enums\AircraftStatus::label($aircraft->status) }}</td>
+        <td>{!! Dispo_AcStatusBadge($aircraft->status) !!}</td>
       </tr>
       <tr>
         <th scope="row">@lang('common.state')</th>
-        <td>{{ \App\Models\Enums\AircraftState::label($aircraft->state) }}</td>
+        <td>{!! Dispo_AcStateBadge($aircraft->state) !!}</td>
       </tr>
       <tr>
         <th scope="row">@lang('DisposableAirlines::common.airline')</th>

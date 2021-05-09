@@ -29,7 +29,7 @@ class FleetController extends Controller
   {
     $fleet = $this->aircraftRepo->orderby('registration', 'asc')->paginate(50);
     $DisposableHubs = Module::find('DisposableHubs');
-    if($DisposableHubs) { 
+    if($DisposableHubs) {
       $DisposableHubs = $DisposableHubs->isEnabled();
     }
 
@@ -44,7 +44,7 @@ class FleetController extends Controller
   public function subfleet($type)
   {
     $DisposableHubs = Module::find('DisposableHubs');
-    if($DisposableHubs) { 
+    if($DisposableHubs) {
       $DisposableHubs = $DisposableHubs->isEnabled();
     }
     $subfleet = $this->subfleetRepo->where('type', $type)->first();
@@ -67,25 +67,30 @@ class FleetController extends Controller
   public function aircraft($reg)
   {
     $DisposableTools = Module::find('DisposableTools');
-    if($DisposableTools) { 
+    if($DisposableTools) {
       $DisposableTools = $DisposableTools->isEnabled();
     }
     $DisposableHubs = Module::find('DisposableHubs');
-    if($DisposableHubs) { 
+    if($DisposableHubs) {
       $DisposableHubs = $DisposableHubs->isEnabled();
     }
     $aircraft = $this->aircraftRepo->where('registration', $reg)->first();
-    
+
     if(!$aircraft) {
       flash()->error('Aircraft Not Found !');
       return redirect(route('DisposableAirlines.dfleet'));
     }
 
-    $pireps = $this->pirepRepo->where('aircraft_id', $aircraft->id)->orderby('submitted_at', 'desc')->take(5)->get();
+    $pireps = $this->pirepRepo->where('aircraft_id', $aircraft->id)
+                              ->where('state', 2)
+                              ->where('status', 'ONB')
+                              ->orderby('submitted_at', 'desc')
+                              ->take(5)
+                              ->get();
     $showimage = null;
     $acimage = strtolower('image/aircraft/'.$aircraft->registration.'.jpg');
     $sfimage = strtolower('image/subfleet/'.$aircraft->subfleet->type.'.jpg');
-    if(is_file($acimage)) { $showimage = $acimage; } 
+    if(is_file($acimage)) { $showimage = $acimage; }
     elseif(is_file($sfimage)) { $showimage = $sfimage; }
 
     return view('DisposableAirlines::aircraft',[
