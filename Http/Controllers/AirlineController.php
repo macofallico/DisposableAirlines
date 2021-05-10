@@ -70,11 +70,11 @@ class AirlineController extends Controller
 
         if($airline) {
             $DisposableTools = Module::find('DisposableTools');
-            if($DisposableTools) { 
+            if($DisposableTools) {
               $DisposableTools = $DisposableTools->isEnabled();
             }
             $DisposableHubs = Module::find('DisposableHubs');
-            if($DisposableHubs) { 
+            if($DisposableHubs) {
               $DisposableHubs = $DisposableHubs->isEnabled();
             }
             $pilots = $this->userRepo->where('airline_id', $airline->id)->orderby('id')->get();
@@ -84,8 +84,10 @@ class AirlineController extends Controller
                 ->where('state', '!=', PirepState::IN_PROGRESS)
                 ->orderby('submitted_at', 'desc')
                 ->get();
-            $income = substr($airline->journal->transactions->sum('credit'),0,-2);
-            $expense = substr($airline->journal->transactions->sum('debit'),0,-2);
+            // $income = substr($airline->journal->transactions->sum('credit'),0,-2);
+            // $expense = substr($airline->journal->transactions->sum('debit'),0,-2);
+            $income = $airline->journal->transactions->sum('credit');
+            $expense = $airline->journal->transactions->sum('debit');
             $balance = $income - $expense;
 
             if(setting('pilots.hide_inactive')) {
@@ -96,9 +98,9 @@ class AirlineController extends Controller
                 'disptools' => $DisposableTools,
                 'disphubs'  => $DisposableHubs,
                 'airline'   => $airline,
-                'income'    => $income,
-                'expense'   => $expense,
-                'balance'   => $balance,
+                'income'    => substr($income,0,-2),
+                'expense'   => substr($expense,0,-2),
+                'balance'   => substr($balance,0,-2),
                 'users'     => $pilots,
                 'pireps'    => $pireps,
                 'fleet'     => $aircraft,
