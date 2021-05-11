@@ -1,4 +1,5 @@
 Disposable Airlines Module for phpVMS v7
+11.MAY.2021
 
 This module is compatible with the latest dev build as of 17APR2021, there is no need to modify any default files.
 Technically all blade files (views/pages or whatever you call them) should work with your template but they are mainly 
