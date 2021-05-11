@@ -1,4 +1,5 @@
 # Disposable Airlines Module for phpVMS v7
+***11.MAY.2021***
 
 This module is compatible with the latest dev build as of 17APR2021, there is no need to modify any default files.\
 Technically all blade files (views/pages or whatever you call them) should work with your template but they are mainly designed for Bootstrap compatible themes (like Disposable Themes, Stisla etc). 
@@ -82,3 +83,17 @@ I always try to provide info and support but can not fix things you broke ;) Jus
 Enjoy,\
 Disposable\
 17.APR.2021
+
+***Update Notes***
+11.MAY.2021
+* Module is now able to listen PhpVms events and change aircraft state
+
+  Pirep Prefiled : PARKED > IN USE\
+  Airborne       : IN USE > IN AIR\
+  Landing        : IN AIR > IN USE\
+  Pirep Filed    : IN USE > PARKED\
+
+  (As of date, only SimBrief form of PhpVms supports state checks.)\
+* Fixed Aircraft Pireps card not showing latest accepted pireps\
+* Switched from php/number_format to phpvms/money to avoid non-numeric string errors.\
+* Also some minor fixes applied to other blades.\

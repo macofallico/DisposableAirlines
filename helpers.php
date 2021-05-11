@@ -22,7 +22,7 @@ use \Nwidart\Modules\Facades\Module;
   // Below Functions Will Be Used If DisposableTools Module Is Not Installed or Disabled
   // Same functions are defined there, this is just a safety backup
   // If you need to edit any of these functions, please use the main module helper file instead of this
-  // If it module gets uninstalled or disabled, this module will work as expected with the functions below
+  // If that module gets uninstalled or disabled, this module will work as expected with the functions below
   if(!Dispo_Modules('DisposableTools'))
   {
     // Format Pirep State Badge
