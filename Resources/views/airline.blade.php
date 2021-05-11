@@ -63,6 +63,9 @@
           </div>
         @endif
       </div>
+      @if($disptools)
+        @widget('Modules\DisposableTools\Widgets\FlightsMap', ['sourcce' => $airline->id])
+      @endif
       @if($disptools && $pireps->count() > 0)
         @widget('Modules\DisposableTools\Widgets\AirlineStats', ['airline' => $airline->id])
       @endif
