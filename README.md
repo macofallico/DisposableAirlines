@@ -85,18 +85,20 @@ Disposable\
 17.APR.2021
 
 ***Update Notes***\
+12.MAY.2021
+* Fixed a typo in airline.blade.php
+
 11.MAY.2021
 * Module is now able to listen PhpVms events and change aircraft state
-
+```
   Pirep Prefiled : PARKED > IN USE\
   Airborne       : IN USE > IN AIR\
   Landing        : IN AIR > IN USE\
   Pirep Filed    : IN USE > PARKED\
-
+```
   (As of date, only SimBrief form of PhpVms supports state checks.)
 * Fixed Aircraft Pireps card not showing latest accepted pireps
 * Switched from php/number_format to phpvms/money to avoid non-numeric string errors.
 * Also some minor fixes applied to other blades.
 
-12.MAY.2021
-* Fixed a typo in airline.blade.php
+
