@@ -91,10 +91,10 @@ Disposable\
 11.MAY.2021
 * Module is now able to listen PhpVms events and change aircraft state
 ```
-  Pirep Prefiled : PARKED > IN USE\
-  Airborne       : IN USE > IN AIR\
-  Landing        : IN AIR > IN USE\
-  Pirep Filed    : IN USE > PARKED\
+  Pirep Prefiled : PARKED > IN USE
+  Airborne       : IN USE > IN AIR
+  Landing        : IN AIR > IN USE
+  Pirep Filed    : IN USE > PARKED
 ```
   (As of date, only SimBrief form of PhpVms supports state checks.)
 * Fixed Aircraft Pireps card not showing latest accepted pireps
