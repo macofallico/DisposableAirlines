@@ -1,5 +1,5 @@
 Disposable Airlines Module for phpVMS v7
-12.MAY.2021
+*** 12.MAY.2021 ***
 
 This module is compatible with the latest dev build as of 17APR2021, there is no need to modify any default files.
 Technically all blade files (views/pages or whatever you call them) should work with your template but they are mainly 
@@ -83,6 +83,9 @@ Disposable
 17.APR.2021
 
 ***Update Notes***
+12.MAY.2021
+* Fixed a typo in airline.blade.php
+
 11.MAY.2021
 * Module is now able to listen PhpVms events and change aircraft state
 
@@ -96,5 +99,3 @@ Disposable
 * Switched from php/number_format to phpvms/money to avoid non-numeric string errors.
 * Also some minor fixes applied to other blades.
 
-12.MAY.2021
-* Fixed a typo in airline.blade.php
