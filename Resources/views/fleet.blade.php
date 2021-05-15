@@ -7,7 +7,7 @@
       <div class="card mb-2">
         <div class="card-header p-1">
           <h5 class="p-0 m-1">
-            @isset($subfleet) {{ $subfleet->name }} @else {{ config('app.name') }} @endisset @lang('DisposableAirlines::common.fleet')
+            @isset($subfleet) {{ $subfleet->airline->name }} | {{ $subfleet->name }}  @else {{ config('app.name') }} @endisset @lang('DisposableAirlines::common.fleet')
             <i class="fas fa-plane-departure float-right"></i>
           </h5>
         </div>
@@ -78,10 +78,10 @@
           </table>
         </div>
         <div class="card-footer p-1 text-right">
-          <div class="row row-cols-2">
+          <div class="row row-cols-3">
             <div class="col text-left">
               @isset($subfleet)
-                @lang('DisposableAirlines::common.config') :
+                <b>@lang('DisposableAirlines::common.config'):</b>
                 @foreach($subfleet->fares as $fare)
                   @if(!$loop->first) &bull; @endif
                   {{ $fare->name }}
@@ -90,8 +90,13 @@
                 @endforeach
               @endisset
             </div>
+            <div class="col text-center">
+              @isset($subfleet)
+                <b>{{ trans_choice('common.flight',2) }}:</b> {{ $subfleet->flights->count() }}
+              @endisset
+            </div>
             <div class="col text-right">
-              @lang('DisposableAirlines::common.totfleet') : {{ $fleet->total() }}
+              <b>@lang('DisposableAirlines::common.totfleet'):</b> {{ $fleet->total() }}
             </div>
           </div>
         </div>
