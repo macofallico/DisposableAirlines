@@ -53,6 +53,25 @@
     </table>
   </div>
   <div class="card-footer p-1 text-right">
-    @lang('DisposableAirlines::common.totpireps'): {{ $pireps->count() }}
+    @lang('DisposableAirlines::common.totpireps'): {{ $pireps->total() }}
   </div>
 </div>
+
+<div class="row mt-2">
+  <div class="col text-center">
+    {{ $pireps->links('pagination.default') }}
+  </div>
+</div>
+
+{{-- Script For Pagination --}}
+@if(request()->has('page'))
+  @section('scripts')
+    @parent
+    <script>
+      function ActivateTab(selection) {
+        $('.nav-pills a[href="#pills-' + selection + '"]').tab('show');
+      };
+      ActivateTab('pireps');
+    </script>
+  @endsection
+@endif

@@ -83,7 +83,7 @@ class AirlineController extends Controller
             $pireps = $this->pirepRepo->where('airline_id', $airline->id)
                 ->where('state', '!=', PirepState::IN_PROGRESS)
                 ->orderby('submitted_at', 'desc')
-                ->get();
+                ->paginate(100);
             // $income = substr($airline->journal->transactions->sum('credit'),0,-2);
             // $expense = substr($airline->journal->transactions->sum('debit'),0,-2);
             $income = $airline->journal->transactions->sum('credit');
