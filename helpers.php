@@ -4,6 +4,7 @@ use \App\Models\Enums\AircraftStatus;
 use \App\Models\Enums\PirepState;
 use \App\Models\Enums\UserState;
 use \Nwidart\Modules\Facades\Module;
+use Illuminate\Support\Facades\DB;
 
   // Check Disposable Modules
   // Return boolean
@@ -16,6 +17,38 @@ use \Nwidart\Modules\Facades\Module;
         $module_enabled = $dispo_module->isEnabled();
       }
       return $module_enabled;
+    }
+  }
+
+  // Convert Minutes To Hours:Minutes
+  if (!function_exists('Dispo_TimeConvert')) {
+    function Dispo_TimeConvert($minutes)
+    {
+      $hours = floor($minutes / 60);
+      $minutes = ($minutes % 60);
+      return sprintf('%02d:%02d', $hours, $minutes);
+    }
+  }
+
+  // Check Disposable Module Settings
+  // Return mixed, either boolean as true/false or the value as string
+  // If the settings is not found, return false
+  if (!function_exists('Dispo_Settings')) {
+    function Dispo_Settings($key)
+    {
+      $setting = DB::table('disposable_settings')->select('key', 'value')->where('key', $key)->first();
+
+      if (!$setting) {
+        return false;
+      }
+
+      if($setting->value === 'false') {
+        return false;
+      } elseif ($setting->value === 'true') {
+        return true;
+      } else {
+        return $setting->value;
+      }
     }
   }
 

@@ -10,6 +10,7 @@ use App\Models\Enums\AircraftState;
 use App\Models\Enums\PirepState;
 use App\Models\Enums\PirepStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Laracasts\Flash\Flash;
 use Log;
 
@@ -40,6 +41,17 @@ class AdminController extends Controller
     elseif($result === 2) { Flash::success('Aircraft State Changed Back to PARKED and Pirep CANCELLED'); }
   }
 
+  public function ChangeWebhookSettings($whmain, $whurl, $whname) {
+    if($whmain != 'true') { $whmain = 'false'; }
+    if(empty($whname)) { $whname = config('app.name'); }
+    DB::table('disposable_settings')->upsert([
+      ['key' => 'dairlines.discord_pirepmsg', 'value'=> $whmain],
+      ['key' => 'dairlines.discord_pirep_webhook', 'value' => $whurl],
+      ['key' => 'dairlines.discord_pirep_msgposter', 'value' => $whname],
+    ],['key'], ['value']);
+    Flash::success('Discord WebHook Settings Updated');
+  }
+
   // Admin Page
   public function admin(Request $request)
   {
@@ -47,6 +59,14 @@ class AdminController extends Controller
     if($acreg) {
       $this->FixAircraftState($acreg);
     }
+
+    if($request->input('action') === 'pirepmsg') {
+      $whmain = $request->input('mainsetting');
+      $whurl = $request->input('webhookurl');
+      $whname = $request->input('webhookname');
+      $this->ChangeWebhookSettings($whmain, $whurl, $whname);
+    }
+
     return view('DisposableAirlines::admin');
   }
 }

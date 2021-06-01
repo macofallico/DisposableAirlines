@@ -53,6 +53,35 @@
           <span class="text-danger"><b>If the aircraft has an active (in-progress) PIREP, it gets CANCELLED too !!!</b></span>
         </div>
       </div>
+      <div class="col-sm-8">
+        <div class="card border-blue-bottom" style="padding:10px;">
+          <b>Configure Discord Webhook (for Pirep Filed Messages)</b>
+          <br><br>
+          <form action="/admin/disposableairlines" id="discordmessages">
+            <input type="hidden" name="action" value="pirepmsg">
+            <div class="row text-left">
+              <div class="col-sm-8">
+                <label for="mainsettings">Enable Messages</label>
+                <input type="checkbox" id="mainsetting" name="mainsetting" value="true" @if(Dispo_Settings('dairlines.discord_pirepmsg')) checked @endif>
+              </div>
+            </div>
+            <div class="row text-left">
+              <div class="col-sm-12">
+                <label for="webhookurl">Webhook URL (copy&paste from your Discord Server settings)</label>
+                <input class="form-control" type="text" id="webhookurl" name="webhookurl" value="{{ Dispo_Settings('dairlines.discord_pirep_webhook') }}" maxlength="500">
+              </div>
+            </div>
+            <div class="row text-left">
+              <div class="col-sm-4">
+                <label for="webhookname">Message Poster's Name</label>
+                <input class="form-control" type="text" id="webhookname" name="webhookname" value="{{ Dispo_Settings('dairlines.discord_pirep_msgposter') }}" maxlength="50">
+              </div>
+            </div>
+            <input type="submit" value="Save Settings">
+          </form>
+          <br>
+          <span class="text-info">Create your webhook before enabling it here, also check laravel logs if the messages do not appear in your Discord</span>
+        </div>
     </div>
-  </div>  
+  </div>
 @endsection

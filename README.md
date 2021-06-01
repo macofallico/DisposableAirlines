@@ -1,6 +1,10 @@
 ## Disposable Airlines Module for phpVMS v7
 **Update Notes**
 
+01.JUN.2021
+* Added Discord Webhook integration for sending out `Pirep Received` messages  
+  ( Go to `Admin -> Disposable Airlines` module for basic settings )
+
 12.MAY.2021
 * Fixed a typo in airline.blade.php
 
@@ -10,9 +14,9 @@
   Pirep Prefiled : PARKED > IN USE
   Airborne       : IN USE > IN AIR
   Landing        : IN AIR > IN USE
-  Pirep Filed    : IN USE > PARKED
+  Pirep Filed    : IN USE > PARKED  *** Also Sends Out Discord Message if enabled / 01.JAN ***
 ```
-  (As of date, only SimBrief form of PhpVms supports state checks.)  
+  (01.JAN: SimBrief form of PhpVms and vmsAcars supports state checks)  
 * Fixed Aircraft Pireps card not showing latest accepted pireps
 * Switched from php/number_format to phpvms/money to avoid non-numeric string errors.
 * Also some minor fixes applied to other blades.
