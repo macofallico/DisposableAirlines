@@ -33,6 +33,7 @@ class PirepFiledEventListener
     // Create new webhook in your Discord Server settings and copy&paste its URL here
     $webhookurl = Dispo_Settings('dairlines.discord_pirep_webhook');
     $msgposter = !empty(Dispo_Settings('dairlines.discord_pirep_msgposter')) ? Dispo_Settings('dairlines.discord_pirep_msgposter') : config('app.name');
+    $avatar = !empty($pirep->user->avatar) ? $pirep->user->avatar->url : "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
     $pirep_aircraft = !empty($pirep->aircraft) ? $pirep->aircraft->registration." (".$pirep->aircraft->icao.")" : "Not Reported";
     $json_data = json_encode([
       // Plain Text Message
@@ -56,7 +57,7 @@ class PirepFiledEventListener
         // Embed left border color in HEX
         "color" => hexdec( "FF0000" ),
         // Pilot Avatar will be used as Embed Thumbnail
-        "thumbnail" => [ "url" => $pirep->user->avatar->url ],
+        "thumbnail" => [ "url" => $avatar ],
        // Pilot In Command will be used as the Author of the message
         "author" => [
           "name" => "Pilot In Command: ".$pirep->user->name_private,
