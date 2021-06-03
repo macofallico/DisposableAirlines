@@ -1,6 +1,9 @@
 ## Disposable Airlines Module for phpVMS v7
 **Update Notes**
 
+03.JUN.2021
+* German Translation (thanks @derrobin154)
+
 01.JUN.2021
 * Added Discord Webhook integration for sending out `Pirep Received` messages  
   ( Go to `Admin -> Disposable Airlines` module for basic settings )
