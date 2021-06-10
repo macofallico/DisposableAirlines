@@ -43,7 +43,7 @@
           {{ Dispo_Fuel($aircraft->fuel_onboard) }}
         @endif
       </td>
-      <td>{!! Dispo_AcStateBadge($aircraft->state) !!}</td>
+      <td>{!! Dispo_AcStateBadge($aircraft->state, $aircraft->id) !!}</td>
       <td>{!! Dispo_AcStatusBadge($aircraft->status) !!}</td>
     </tr>
   @endforeach

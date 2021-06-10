@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <th scope="row">@lang('common.state')</th>
-        <td>{!! Dispo_AcStateBadge($aircraft->state) !!}</td>
+        <td>{!! Dispo_AcStateBadge($aircraft->state, $aircraft->id) !!}</td>
       </tr>
       <tr>
         <th scope="row">@lang('DisposableAirlines::common.airline')</th>
