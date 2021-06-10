@@ -3,6 +3,7 @@ use \App\Models\Enums\AircraftState;
 use \App\Models\Enums\AircraftStatus;
 use \App\Models\Enums\PirepState;
 use \App\Models\Enums\UserState;
+use \App\Models\SimBrief;
 use \Nwidart\Modules\Facades\Module;
 use Illuminate\Support\Facades\DB;
 
