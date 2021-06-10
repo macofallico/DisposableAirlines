@@ -1,6 +1,9 @@
 ## Disposable Airlines Module for phpVMS v7
 **Update Notes**
 
+10.JUN.201
+* Update helpers and necessary blades to show SimBrief Booking state as AC state too.
+
 03.JUN.2021
 * German Translation (thanks @derrobin154)
 
