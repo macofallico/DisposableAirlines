@@ -11,9 +11,10 @@ class PirepPrefiledEventListener
 {
   // Listen PirepPrefiled Event
   // To Change Aircraft State : IN_USE
+  // Do this only for MANUAL Pireps ! ACARS Pireps will use Pirep Updated Event
   public function handle(PirepPrefiled $event)
   {
-    if($event->pirep->aircraft) {
+    if($event->pirep->aircraft && $event->pirep->source === 0) {
       $pirep_aircraft = $event->pirep->aircraft;
       $aircraft = Aircraft::where('id', $pirep_aircraft->id)->first();
       if($aircraft) {
