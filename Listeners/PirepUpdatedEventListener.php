@@ -15,7 +15,7 @@ class PirepUpdatedEventListener
   // According to Pirep Status (Boarding, TakeOff, Landed)
   public function handle(PirepUpdated $event)
   {
-    if($event->pirep->aircraft) {
+    if(Dispo_Settings('dairlines.acstate_control') && $event->pirep->aircraft) {
       $pirep = $event->pirep;
       if($pirep->status === PirepStatus::BOARDING || $pirep->status === PirepStatus::TAKEOFF || $pirep->status === PirepStatus::LANDED) {
         $pirep_aircraft = $event->pirep->aircraft;

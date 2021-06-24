@@ -19,7 +19,7 @@ class PirepFiledEventListener
       $this->SendPirepMessage($pirep);
     }
     // Change Aircraft State
-    if($pirep->aircraft) {
+    if(Dispo_Settings('dairlines.acstate_control') && $pirep->aircraft) {
       $aircraft = Aircraft::where('id', $pirep->aircraft->id)->first();
       if($aircraft) {
         $aircraft->state = AircraftState::PARKED;

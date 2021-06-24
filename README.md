@@ -1,6 +1,9 @@
 ## Disposable Airlines Module for phpVMS v7
 **Update Notes**
 
+24.JUN.21
+* Added settings for Aircraft State Control/Change feature, by default it is DISABLED.
+
 21.JUN.21
 * Aircraft state change logic updated for better handling of acars start flight errors.
 

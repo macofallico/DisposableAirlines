@@ -52,6 +52,14 @@ class AdminController extends Controller
     Flash::success('Discord WebHook Settings Updated');
   }
 
+  public function ChangeStateControlSettings($state_choice) {
+    if($state_choice != 'true') { $state_choice = 'false'; }
+    DB::table('disposable_settings')->upsert([
+      ['key' => 'dairlines.acstate_control', 'value'=> $state_choice],
+    ],['key'], ['value']);
+    Flash::success('Aircraft State Control Settings Updated');
+  }
+
   // Admin Page
   public function admin(Request $request)
   {
@@ -65,6 +73,11 @@ class AdminController extends Controller
       $whurl = $request->input('webhookurl');
       $whname = $request->input('webhookname');
       $this->ChangeWebhookSettings($whmain, $whurl, $whname);
+    }
+
+    if($request->input('action') === 'acstate') {
+      $state_choice = $request->input('sc');
+      $this->ChangeStateControlSettings($state_choice);
     }
 
     return view('DisposableAirlines::admin');

@@ -52,6 +52,24 @@
           <br>
           <span class="text-danger"><b>If the aircraft has an active (in-progress) PIREP, it gets CANCELLED too !!!</b></span>
         </div>
+        
+        <div class="card border-blue-bottom" style="padding:10px;">
+          <b>Enable / Disable Aircraft State Control</b>
+          <br><br>
+          <form action="/admin/disposableairlines" id="ac_state">
+            <input type="hidden" name="action" value="acstate">
+            <div class="row text-left">
+              <div class="col-sm-8">
+                <label for="sc">Control AC State</label>
+                <input type="checkbox" id="sc" name="sc" value="true" @if(Dispo_Settings('dairlines.acstate_control')) checked @endif>
+              </div>
+            </div>
+            <input type="submit" value="Save Setting">
+          </form>
+          <br>
+          <span class="text-danger"><b>When enabled Disposable Airlines module will CHANGE aircraft STATE's according to pirep events !</b></span>
+        </div>
+        
       </div>
       <div class="col-sm-8">
         <div class="card border-blue-bottom" style="padding:10px;">

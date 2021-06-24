@@ -13,7 +13,7 @@ class PirepCancelledEventListener
   // To Change Aircraft State : PARKED (On Ground)
   public function handle(PirepCancelled $event)
   {
-    if($event->pirep->aircraft) {
+    if(Dispo_Settings('dairlines.acstate_control') && $event->pirep->aircraft) {
       $pirep = $event->pirep;
       if($pirep) {
         $pirep_aircraft = $pirep->aircraft;
