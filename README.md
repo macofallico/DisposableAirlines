@@ -1,6 +1,9 @@
 ## Disposable Airlines Module for phpVMS v7
 **Update Notes**
 
+06.JUL.21
+* Updated German Translation (thanks @GAE074)
+
 24.JUN.21
 * Added settings for Aircraft State Control/Change feature, by default it is DISABLED.
 
