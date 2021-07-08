@@ -1,6 +1,9 @@
 ## Disposable Airlines Module for phpVMS v7
 **Update Notes**
 
+08.JUL.21
+* Italian Translation (thanks @Fabietto996)
+
 06.JUL.21
 * Updated German Translation (thanks @GAE074)
 
