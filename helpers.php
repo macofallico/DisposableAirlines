@@ -215,8 +215,7 @@ if(!Dispo_Modules('DisposableTools'))
 
       if (!$setting && !$default_value) { $result = false; }
       elseif (!$setting && $default_value) { $result = $default_value; }
-
-      if (!$setting->value) { $result = $default_value; }
+      elseif (!$setting->value) { $result = $default_value; }
       elseif ($setting->value === 'false') { $result = false; }
       elseif ($setting->value === 'true') { $result = true; }
       else { $result = $setting->value; }
