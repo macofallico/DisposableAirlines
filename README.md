@@ -84,9 +84,7 @@ Airline direct links use airline icao code, subfleets use their unique type and 
 
 ## Duplicating Module Blades/Views
 
-Technically all blade files should work with your template but they are mainly designed for Bootstrap compatible themes.  
-So if something looks weird in your template then you need to edit them.  
-I kindly suggest copying them under your theme folder and do your changes there, directly editing module files will only make updating harder for you.  
+Technically all blade files should work with your template but they are mainly designed for Bootstrap compatible themes. So if something looks weird in your template then you need to edit them. I kindly suggest copying them under your theme folder and do your changes there, directly editing module files will only make updating harder for you.
 
 All Disposable Modules are capable of displaying customized files located under your theme folders;
 
