@@ -1,6 +1,6 @@
 # Disposable Airlines Module
 
-Module is compatible with any the latest development build of phpVMS v7 released after **17.APR.2021**. Provides ;
+Module is compatible with any latest development build of phpVMS v7 released after **17.APR.2021**. Provides ;
 
 * Airlines page (if you have more than one)
 * Airline Details page
