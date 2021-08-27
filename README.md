@@ -96,7 +96,6 @@ All Disposable Modules are capable of displaying customized files located under 
 ## Update Notes
 
 07.AUG.21
-* Version rounding
 * Release zip file structure changed for PhpVms Module Installer compatability.
 
 08.JUL.21
@@ -106,7 +105,7 @@ All Disposable Modules are capable of displaying customized files located under 
 * Updated German Translation (thanks @GAE074)
 
 24.JUN.21
-* Added settings for Aircraft State Control/Change feature, by default it is DISABLED.
+* Added settings for Aircraft State Control/Change feature, by default it is **DISABLED**
 
 21.JUN.21
 * Aircraft state change logic updated for better handling of acars start flight errors.
@@ -121,19 +120,16 @@ All Disposable Modules are capable of displaying customized files located under 
 * Added Discord Webhook integration for sending out `Pirep Received` messages  
   ( Go to `Admin -> Disposable Airlines` module for basic settings )
 
-12.MAY.21
-* Fixed a typo in airline.blade.php
-
 11.MAY.21
 * Module is now able to listen PhpVms events and change aircraft state
 
 ```md
-  Boarding    : PARKED > IN USE
-  TakeOff     : IN USE > IN AIR
-  Landing     : IN AIR > IN USE
-  Pirep Filed : IN USE > PARKED  **Also Sends Out Discord Message if enabled / 01.JAN**
+Boarding    : PARKED > IN USE
+TakeOff     : IN USE > IN AIR
+Landing     : IN AIR > IN USE
+Pirep Filed : IN USE > PARKED  **Also sends a Discord Message if enabled**
 ```
 
 * Fixed Aircraft Pireps card not showing latest accepted pireps
 * Switched from php/number_format to phpvms/money to avoid non-numeric string errors.
-* Also some minor fixes applied to other blades.
+* Also some minor fixes applied to other blades  
