@@ -93,6 +93,9 @@ All Disposable Modules are capable of displaying customized files located under 
 
 ## Update Notes
 
+11.SEP.21
+* PT-BR Translation (Thanks to Edson Felix)
+
 07.AUG.21
 * Release zip file structure changed for PhpVms Module Installer compatability.
 
