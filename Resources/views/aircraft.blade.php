@@ -23,58 +23,65 @@
 
     {{-- Show ac or subfleet image if there is one --}}
     <div class="col-6">
-      @if($showimage || Dispo_Modules('DisposableTech'))
+      @if($showimage || $maint || $disptech)
         <div class="card mb-2">
           <div class="card-header p-0">
-            @if(Dispo_Modules('DisposableTech'))
-              <nav>
-                <h5 class="m-0 p-0">
-                  <i class="fas fa-cogs float-right mt-2 mr-1 p-1"></i>
-                  <div class="nav nav-tabs m-0 p-0 border-0" id="nav-tab" role="tablist">
-                  @if($showimage)
-                    <a class="nav-link active m-1 p-1 border-0" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab" aria-controls="nav-image" aria-selected="true">
-                      {{ $aircraft->subfleet->airline->name }} {{ $aircraft->icao }}
-                    </a>
-                  @endif
-                  @if(Dispo_GetAcSpecs($aircraft)->count())
-                    @foreach(Dispo_GetAcSpecs($aircraft) as $sp)
-                      <a class="nav-link @if($loop->first && !$showimage) active @endif m-1 p-1 border-0" id="nav-specs{{ $sp->id }}-tab" data-toggle="tab"
+            <nav>
+              <h5 class="m-0 p-0">
+                <i class="fas fa-cogs float-right mt-2 mr-1 p-1"></i>
+                <div class="nav nav-tabs m-0 p-0 border-0" id="nav-tab" role="tablist">
+                @if($showimage)
+                  <a class="nav-link active m-1 p-1 border-0" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab" aria-controls="nav-image" aria-selected="true">
+                    {{ $aircraft->subfleet->airline->name }} {{ $aircraft->icao }}
+                  </a>
+                @endif
+                @if($maint)
+                  <a class="nav-link @if(!$showimage) active @endif m-1 p-1 border-0" id="nav-maint-tab" data-toggle="tab" href="#nav-maint" role="tab" aria-controls="nav-maint" aria-selected="false">
+                    Maintenance
+                  </a>
+                @endif
+                @if($disptech && $specs)
+                  @if(count($specs) > 0 && count($specs) <= 2)
+                    @foreach($specs as $sp)
+                      <a class="nav-link @if($loop->first && !$showimage && !$maint) active @endif m-1 p-1 border-0" id="nav-specs{{ $sp->id }}-tab" data-toggle="tab"
                           href="#nav-specs{{ $sp->id }}" role="tab" aria-controls="nav-specs{{ $sp->id }}" aria-selected="false">{{ $sp->saircraft }}</a>
                     @endforeach
+                  @elseif(count($specs) > 2)
+                    <a class="nav-link dropdown-toggle m-1 p-1 border-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Supported Addons</a>
+                    <div class="dropdown-menu card-header">
+                      @foreach($specs as $sp)
+                        <a class="nav-link @if($loop->first && !$showimage && !$maint) active @endif m-1 p-1 border-0" id="nav-specs{{ $sp->id }}-tab" data-toggle="tab"
+                            href="#nav-specs{{ $sp->id }}" role="tab" aria-controls="nav-specs{{ $sp->id }}" aria-selected="false">
+                            {{ $sp->saircraft }}
+                        </a>
+                      @endforeach
+                    </div>
                   @endif
-                  </div>
-                </h5>
-              </nav>
-            @else
-              <h5 class="m-1 p-0">
-                {{ $aircraft->subfleet->airline->name }} {{ $aircraft->icao }}
-                <i class="fas fa-camera-retro float-right"></i>
+                @endif
+                </div>
               </h5>
-            @endif
+            </nav>
           </div>
           <div class="card-body p-0">
-            @if(Dispo_Modules('DisposableTech'))
-              <div class="tab-content" id="nav-tabContent">
-                @if($showimage)
-                  <div class="tab-pane fade show active" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab">
-                    <img src="{{ public_asset($showimage) }}"  width='100%'/>
+            <div class="tab-content" id="nav-tabContent">
+              @if($showimage)
+                <div class="tab-pane fade show active" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab">
+                  <img src="{{ public_asset($showimage) }}"  width='100%'/>
+                </div>
+              @endif
+              @if($maint)
+                <div class="tab-pane fade @if(!$showimage) show active @endif" id="nav-maint" role="tabpanel" aria-labelledby="nav-maint-tab">
+                  @include('TurkSim::maintenance_table')
+                </div>
+              @endif
+              @if($disptech && $specs)
+                @foreach($specs as $sp)
+                  <div class="tab-pane fade @if($loop->first && !$showimage && !$maint) show active @endif" id="nav-specs{{ $sp->id }}" role="tabpanel" aria-labelledby="nav-specs{{ $sp->id }}-tab">
+                    @include('DisposableTech::specs_table')
                   </div>
-                @endif
-                @php
-                  $paxwgt = setting('simbrief.noncharter_pax_weight');
-                  if (setting('units.weight') === 'kg') { $paxwgt = $paxwgt / 2.20462262185 ;}
-                @endphp
-                @if(Dispo_GetAcSpecs($aircraft)->count())
-                  @foreach(Dispo_GetAcSpecs($aircraft) as $sp)
-                    <div class="tab-pane fade @if($loop->first && !$showimage) show active @endif" id="nav-specs{{ $sp->id }}" role="tabpanel" aria-labelledby="nav-specs{{ $sp->id }}-tab">
-                      @include('DisposableTech::specs_table')
-                    </div>
-                  @endforeach
-                @endif
-              </div>
-            @else
-              <img src="{{ public_asset($showimage) }}"  width='100%'/>
-            @endif
+                @endforeach
+              @endif
+            </div>
           </div>
         </div>
       @endif
