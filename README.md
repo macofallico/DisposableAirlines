@@ -82,6 +82,15 @@ Also having a direct link to a specific airline/subfleet/aircraft is possible wi
 Airline direct links use airline icao code, subfleets use their unique type and aircrafts use their registrations.  
 *(Best way to add links in Laravel structure is to use routes like above, but plain html href="/dairline/DSP" is also possible)*
 
+## Using Aircraft / Subfleet Images
+
+If you want to display Aircraft pictures or screenshots, create two folders (**image/aircraft** and **image/subfleet**) under your public image folder (*public* or *public_html* according to your installation), then place your images under them.
+
+Aircraft images should be named by registration like **d-ispo.jpg** and Subfleet images by their type like **a320neo-dsp.jpg** (all lowercase)  
+When viewing aircraft details page, this image will be displayed in a card and aircraft images have priority over subfleet images.
+
+Example final path will be like ***public/image/aircraft/d-ispo.jpg*** or ***public_html/image/subfleet/a320neo-dsp.jpg***
+
 ## Duplicating Module Blades/Views
 
 Technically all blade files should work with your template but they are mainly designed for Bootstrap compatible themes. So if something looks weird in your template then you need to edit them. I kindly suggest copying them under your theme folder and do your changes there, directly editing module files will only make updating harder for you.
@@ -92,6 +101,10 @@ All Disposable Modules are capable of displaying customized files located under 
 * Target Location   : `root/resources/views/layouts/YourTheme/modules/DisposableModule/somefile.blade.php`
 
 ## Update Notes
+
+19.SEP.21
+* Aircraft details updated to match latest changes to DispoTech and TurkSim modules
+* Discord Notificiation avatar now uses va defined (env.php) ghost gravatar image if user has no avatar
 
 11.SEP.21
 * PT-BR Translation (Thanks to Edson Felix)
