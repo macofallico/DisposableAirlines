@@ -102,9 +102,11 @@ All Disposable Modules are capable of displaying customized files located under 
 
 ## Update Notes
 
-19.SEP.21
-* Aircraft details updated to match latest changes to DispoTech and TurkSim modules
+21.SEP.21
+* Aircraft details updated to match latest changes to Disposable Tech and TurkSim modules
 * Discord Notificiation avatar now uses va defined (env.php) ghost gravatar image if user has no avatar
+
+**Important Note For TurkSim Module Users : Update TurkSim Module FIRST, this is really important and mandatory! Sorry**
 
 11.SEP.21
 * PT-BR Translation (Thanks to Edson Felix)

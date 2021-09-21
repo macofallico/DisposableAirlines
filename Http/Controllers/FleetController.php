@@ -3,31 +3,18 @@
 namespace Modules\DisposableAirlines\Http\Controllers;
 
 use App\Contracts\Controller;
-use App\Repositories\AircraftRepository;
-use App\Repositories\PirepRepository;
-use App\Repositories\SubfleetRepository;
+use App\Models\Aircraft;
+use App\Models\Pirep;
+use App\Models\Subfleet;
 use Nwidart\Modules\Facades\Module;
 
 class FleetController extends Controller
 {
-  private $aircraftRepo;
-  private $pirepRepo;
-  private $subfleetRepo;
-
-  public function __construct(
-    AircraftRepository $aircraftRepo,
-    PirepRepository $pirepRepo,
-    SubfleetRepository $subfleetRepo
-  ) {
-    $this->aircraftRepo = $aircraftRepo;
-    $this->pirepRepo = $pirepRepo;
-    $this->subfleetRepo = $subfleetRepo;
-  }
   // Full Fleet
   // Return collection
   public function fleet()
   {
-    $fleet = $this->aircraftRepo->orderby('registration', 'asc')->paginate(50);
+    $fleet = Aircraft::orderby('registration', 'asc')->paginate(50);
 
     $DisposableHubs = Module::find('DisposableHubs');
     if ($DisposableHubs) { $DisposableHubs = $DisposableHubs->isEnabled(); }
@@ -45,8 +32,8 @@ class FleetController extends Controller
     $DisposableHubs = Module::find('DisposableHubs');
     if ($DisposableHubs) { $DisposableHubs = $DisposableHubs->isEnabled(); }
 
-    $subfleet = $this->subfleetRepo->where('type', $type)->first();
-    $fleet = $this->aircraftRepo->where('subfleet_id', $subfleet->id)->orderby('registration', 'asc')->paginate(50);
+    $subfleet = Subfleet::where('type', $type)->first();
+    $fleet = Aircraft::where('subfleet_id', $subfleet->id)->orderby('registration', 'asc')->paginate(50);
 
     if (!$subfleet) {
       flash()->error('Subfleet Not Found !');
@@ -77,7 +64,7 @@ class FleetController extends Controller
     $TurkSim = Module::find('TurkSim');
     if ($TurkSim) { $TurkSim = $TurkSim->isEnabled(); }
 
-    $aircraft = $this->aircraftRepo->where('registration', $reg)->first();
+    $aircraft = Aircraft::where('registration', $reg)->first();
 
     if (!$aircraft) {
       flash()->error('Aircraft Not Found !');
@@ -85,7 +72,7 @@ class FleetController extends Controller
     }
 
     // Get Latest Pireps
-    $pireps = $this->pirepRepo->where(
+    $pireps = Pirep::where(
       [
         'aircraft_id' => $aircraft->id,
         'state'       => 2,
