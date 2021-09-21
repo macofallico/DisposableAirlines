@@ -46,6 +46,7 @@
             <div class="row text-left">
               <div class="col-sm-8">
                 <label for="sc">Control AC State</label>
+                <input type="hidden" name="sc" value="false">
                 <input type="checkbox" id="sc" name="sc" value="true" @if(Dispo_Settings('dairlines.acstate_control')) checked @endif>
               </div>
             </div>
@@ -65,6 +66,7 @@
             <div class="row text-left">
               <div class="col-sm-8">
                 <label for="mainsettings">Enable Messages</label>
+                <input type="hidden" name="mainsetting" value="false">
                 <input type="checkbox" id="mainsetting" name="mainsetting" value="true" @if(Dispo_Settings('dairlines.discord_pirepmsg')) checked @endif>
               </div>
             </div>
