@@ -64,6 +64,7 @@
         @endif
       </div>
       @if($disptools)
+        @widget('Modules\DisposableTools\Widgets\FlightsMap', ['source' => 'fleet', 'airline' => $airline->id])
         @widget('Modules\DisposableTools\Widgets\FlightsMap', ['source' => $airline->id])
       @endif
       @if($disptools && $pireps->count() > 0)
