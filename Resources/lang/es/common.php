@@ -3,7 +3,7 @@
 return [
   // Common
   'type'      => 'Tipo',
-  'code'      => 'Código,
+  'code'      => 'Código',
   'config'    => 'Configuración Asientos/Carga',
   'fleet'     => 'Flota',
   'pilots'    => 'Pilotos',
